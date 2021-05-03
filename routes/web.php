@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('post.register');
