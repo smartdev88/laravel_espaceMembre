@@ -12,6 +12,12 @@
                 </div>
             @endif
 
+            @if (session('error'))
+                <div class="alert alert-danger mt-5">
+                    {{ session('error')}}
+                </div>
+            @endif
+
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">Connexion</div>
                 <div class="card-body">
@@ -32,7 +38,7 @@
                             @enderror
                         </div>
                         <div class="mb-3 form-check">
-                          <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                          <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1">
                           <label class="form-check-label" for="remember">Se souvenir de moi</label>
                         </div>
                         <button type="submit" class="btn btn-primary">Connexion</button>
