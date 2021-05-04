@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    LoginController, RegisterController
+    LoginController, RegisterController,
+    LogoutController, ForgotController
 };
 
 /*
@@ -26,4 +27,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('post.reg
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('post.login');
 
-Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
+Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
