@@ -13,18 +13,10 @@
             @endif
 
             <div class="card card-outline-secondary my-4">
-                <div class="card-header">Inscription</div>
+                <div class="card-header">Connexion</div>
                 <div class="card-body">
-                    <form action="{{ route('post.register') }}" method="post">
+                    <form action="{{ route('post.login') }}" method="post">
                         @csrf
-                        <!-- ces champs correspondent aux champs de la BD-->
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}">
-                            @error('name')
-                                <div class="error">{{$message}}</div>
-                            @enderror
-                          </div>
                         <div class="mb-3">
                           <label for="email" class="form-label">Email</label>
                           <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
@@ -39,7 +31,11 @@
                                 <div class="error">{{$message}}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">Inscription</button>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                          <label class="form-check-label" for="remember">Se souvenir de moi</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Connexion</button>
                       </form>
                 </div>
             </div>
