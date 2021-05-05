@@ -34,3 +34,4 @@ Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 
 Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
+Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');

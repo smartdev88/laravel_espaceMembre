@@ -21,7 +21,7 @@
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">Rénitialiser le mot de passe</div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route('post.reset') }}" method="post">
                         @csrf
                         <input type="hidden" name="token" value="{{$password_reset->token}}">
                         <div class="mb-3">

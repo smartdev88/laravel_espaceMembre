@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,31 @@ class ResetController extends Controller
             'password_reset'=>$password_reset
         ];
         return view('auth.reset', $data);
+
+    }
+
+    public function reset(Request $request){
+        // dd(request()->all());
+        $request->validate([
+            'email'=>'required|email',
+            'token'=>'required',
+            'password'=>'required|between:9,20|confirmed',
+        ]);
+        if(!DB::table('password_resets')
+                ->where('email', request('email'))
+                ->where('token', request('token'))->count()){
+            $error ='Vérifier votre adresse email';
+            return back()->withError($error)->withInput();        
+        }
+        $user = User::whereEmail(request('email'))->firstOrFail();
+        // dd($user);
+        $user->password = bcrypt(request('password'));
+        $user->save();
+
+        DB::table('password_resets')->whereEmail(request('email'))->delete();
+
+        $success = 'Mot de passe mis à jour.';
+        return redirect()->route('login')->withSuccess($success);
 
     }
 }
