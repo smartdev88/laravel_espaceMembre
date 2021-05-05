@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     LoginController, RegisterController,
-    LogoutController, ForgotController
+    LogoutController, ForgotController,
+    ResetController
 };
 
 /*
@@ -31,3 +32,5 @@ Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
+
+Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
